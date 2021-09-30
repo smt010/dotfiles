@@ -1,0 +1,35 @@
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set showmatch matchtime=1
+set cmdheight=2
+set laststatus=2
+set showcmd
+set display=lastline
+set listchars=tab:^\ ,trail:~
+set clipboard+=unnamed
+set whichwrap=b,s,h,l,<,>,[,],~
+set softtabstop=2
+
+inoremap <silent> jj <ESC>
+"Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+"Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+"Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+inoremap <c-h> <LEFT>
+inoremap <c-l> <RIGHT>
