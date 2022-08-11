@@ -1,4 +1,0 @@
-#!/bin/zsh
-tmux split-window -v -p 20
-tmux select-pane -t 0
-vim .

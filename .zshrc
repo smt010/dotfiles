@@ -52,14 +52,13 @@ PROMPT='%{$fg[red]%}[%n %~]%{$reset_color%}'
 PROMPT=$PROMPT'${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
 
 #PATH
+export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
 eval "$(pyenv init -)"
 #Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-#ide
-export PATH=$PATH:$HOME
 
 #ruby
 [[ -d ~/.rbenv  ]] && \
@@ -100,16 +99,19 @@ zplug load --verbose
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/yukisamata/.pyenv/versions/anaconda3-2021.05/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/yukisamata/.pyenv/versions/anaconda3-2021.11/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/yukisamata/.pyenv/versions/anaconda3-2021.05/etc/profile.d/conda.sh" ]; then
-        . "/Users/yukisamata/.pyenv/versions/anaconda3-2021.05/etc/profile.d/conda.sh"
+    if [ -f "/Users/yukisamata/.pyenv/versions/anaconda3-2021.11/etc/profile.d/conda.sh" ]; then
+        . "/Users/yukisamata/.pyenv/versions/anaconda3-2021.11/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/yukisamata/.pyenv/versions/anaconda3-2021.05/bin:$PATH"
+        export PATH="/Users/yukisamata/.pyenv/versions/anaconda3-2021.11/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
