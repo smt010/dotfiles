@@ -97,6 +97,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 "git
 Plug 'tpope/vim-fugitive'
@@ -123,27 +125,31 @@ call plug#end()
 
 "LSP
 function! s:on_lsp_buffer_enabled() abort
-	setlocal omnifunc=lsp#complete
-	setlocal signcolumn=yes
-	nmap <buffer> gd <plug>(lsp-definition)
-	nmap <buffer> <f2> <plug>(lsp-rename)
-	autocmd BufWritePre <buffer> LspDocumentFormatSync
-	inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader> <f2> <plug>(lsp-rename)
 endfunction
 
 augroup lsp_install
-	au!
-	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
-command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_popup_delay = 200
-let g:lsp_text_edit_enabled = 0
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_text_edit_enabled = 1
+
+"go
+let g:goimports_simplify = 1
 
 "quickrun
 let g:quickrun_config={'*': {'hook/time/enable': '1'},}
