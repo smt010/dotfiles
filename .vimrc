@@ -32,7 +32,6 @@ set diffopt+=vertical
 inoremap <silent> jj <ESC>
 
 set number " 行番号を表示
-"set cursorline " カーソルラインをハイライト
 
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
@@ -48,9 +47,6 @@ source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
 set wildmenu " コマンドモードの補完
 set history=100 " 保存するコマンド履歴の数
-
-"edit .vimrc
-nmap gv :e $HOME/dotfiles/.vimrc
 
 inoremap " ""<left>
 inoremap ' ''<LEFT>
@@ -97,13 +93,10 @@ endif
 
 call plug#begin()
 "lsp
-Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 
 "git
 Plug 'tpope/vim-fugitive'
@@ -148,7 +141,7 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_popup_delay = 200
-let g:lsp_text_edit_enabled = 1
+let g:lsp_text_edit_enabled = 0
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_float_cursor = 1
 
