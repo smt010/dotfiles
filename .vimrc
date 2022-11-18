@@ -126,11 +126,6 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'thinca/vim-quickrun'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'jceb/vim-orgmode'
 call plug#end()
 
 "LSP
@@ -156,9 +151,6 @@ let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
 let g:lsp_preview_float = 1
 let g:lsp_diagnostics_float_cursor = 1
-
-"closetag
-let g:closetag_filenames = '*.html,*.html.*,*.xhtml,*.phtml'
 
 "quickrun
 let g:quickrun_config={'*': {'hook/time/enable': '1'},}
