@@ -8,6 +8,12 @@
 set fileencoding=utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
+set nobackup
+set noswapfile
+set autoread
+set showcmd
+set hidden
+set list listchars=tab:\▸\-
 set ambiwidth=double
 let $LANG = 'en'
 set clipboard+=unnamed
