@@ -118,6 +118,7 @@ augroup lsp_install
 augroup END
 
 let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 " let g:asyncomplete_popup_delay = 200
