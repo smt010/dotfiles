@@ -21,10 +21,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacag
 export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-#ls alias
-alias la='ls -la'
-alias ll='ls -l'
-
 #alias
 alias rm='rm -i'
 alias mv='mv -i'
@@ -34,8 +30,12 @@ alias cp='cp -i'
 if [[ $(command -v exa) ]]; then
   alias ls='exa --icons --git'
   alias ll='exa -l --icons --git'
+  alias la='exa -la --icons --git'
   alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
   alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+else
+	alias ll='ls -l'
+	alias la='ls -la'
 fi
 
 #prompt
