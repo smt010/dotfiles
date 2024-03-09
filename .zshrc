@@ -26,13 +26,13 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-# exa
-if [[ $(command -v exa) ]]; then
-  alias ls='exa --icons --git'
-  alias ll='exa -l --icons --git'
-  alias la='exa -la --icons --git'
-  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+# ls
+if [[ $(command -v lsd) ]]; then
+  alias ls='lsd'
+  alias ll='lsd -l'
+  alias la='lsd -la'
+	alias lt='lsd --tree'
+	alias lta='lsd -a --tree'
 else
 	alias ll='ls -l'
 	alias la='ls -la'
