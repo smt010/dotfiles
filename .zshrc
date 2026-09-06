@@ -22,6 +22,8 @@ zstyle ':completion:*:default' menu select=1
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias vi='nvim'
+alias vim='nvim'
 
 # ls
 if [[ $(command -v lsd) ]]; then
