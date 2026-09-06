@@ -8,6 +8,10 @@
 #
 
 export LANG=en_US.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+
+# starship
+eval "$(starship init zsh)"
 
 # comp
 autoload -Uz compinit && compinit
