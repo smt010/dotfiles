@@ -6,22 +6,15 @@
 #                          (_)___|___/_| |_|_|  \___|
 #
 #
+
 export LANG=en_US.UTF-8
+
+# comp
 autoload -Uz compinit && compinit
-setopt auto_list
-setopt auto_menu
-setopt auto_cd
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:default' menu select=1
 
-#lsColor
-autoload colors
-colors
-export LSCOLORS=gxfxcxdxbxegedabagacag
-export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-#alias
+# alias
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -38,35 +31,19 @@ else
 	alias la='ls -la'
 fi
 
-#prompt
-autoload -Uz vcs_info
-autoload -Uz colors
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{green}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+"
-zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
-PROMPT='%{$fg[red]%}[%n %~]%{$reset_color%}'
-PROMPT=$PROMPT'${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
-
-#PATH
-export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
 eval "$(pyenv init -)"
 
-#Go
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-#ruby
-[[ -d ~/.rbenv  ]] && \
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init -)"
-
-#fzf
+# fzf
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
@@ -74,8 +51,7 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-#zplug
-
+# zplug
 if [[ ! -d ~/.zplug ]];then
   git clone https://github.com/zplug/zplug ~/.zplug
 fi
@@ -96,4 +72,3 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
